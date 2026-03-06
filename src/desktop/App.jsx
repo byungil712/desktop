@@ -6,6 +6,20 @@ import DesktopIcon from "./Component/DesktopIcon";
 import TitleBtn from "./Component/TitleBtn";
 import FileItem from "./Component/FileItem";
 import Teskbar from "./Component/Teskbar";
+import sun from "/img/sun.png"
+import elysian from "/img/elysian.png"
+import tvn from "/img/tvn.png"
+import pinny from "/img/pinny.jpg"
+import html from "/img/htmlcss.png"
+import js from "/img/js.jpg"
+import react from "/img/React.webp"
+import figma from "/img/figma.svg"
+import photoshop from "/img/photoshop.png"
+import ill from "/img/illustrator.png"
+import ind from "/img/indesign.png"
+import phone from "/img/phone.webp"
+import email from "/img/email.png"
+import github from "/img/github.png"
 
 const app = () => {
    const FS = {
@@ -42,7 +56,7 @@ const app = () => {
       },
       proj1: {
          name: "날씨 앱",
-         icon: "/img/sun.png",
+         icon: sun,
          type: "file",
          title: "날씨 앱 🌤️",
          desc: "React를 활용하여 만든 날씨 앱으로\n메인기능은 OpenWeatherMap API를 활용한 날씨 정보 제공입니다.\n현재 위치 또는 도시 선택으로 실시간 날씨, \n24시간 시간대별 예보, 5일간 주간 예보를 확인할 수 있으며 \n 간단한 미니게임들도 함께 즐길 수 있습니다.",
@@ -52,7 +66,7 @@ const app = () => {
       },
       proj2: {
          name: "엘리시안 클론코딩",
-         icon: "/img/elysian.png",
+         icon: elysian,
          type: "file",
          title: "엘리시안 클론코딩 🏢",
          desc: "계절에 맞게 즐길 수 있는 각종 스포츠를 \n 제공하는  복합 레저, 서비스 기업으로, \n React를 활용하여 클론코딩 해보았습니다",
@@ -61,7 +75,7 @@ const app = () => {
       },
       proj3: {
          name: "tvN 리디자인",
-         icon: "/img/tvN.png",
+         icon: tvn,
          type: "file",
          title: "tvN 리디자인 🚩",
          desc: "현재 tvN 홈페이지는 다소 복잡한 \n  네비게이션과 시각적피로도, 접근성 측면에서 \n 문제가 있다고 생각하여 OTT 디자인으로 \n 재해석하여 리디자인 해보았습니다",
@@ -70,7 +84,7 @@ const app = () => {
       },
       proj4: {
          name: "브랜딩",
-         icon: "/img/pinny.jpg",
+         icon: pinny,
          type: "file",
          title: "브랜딩 & 포스터디자인",
          desc: "계절에 맞게 즐길 수 있는 각종 스포츠를 \n 제공하는  복합 레저, 서비스 기업으로, \n React를 활용하여 클론코딩 했습니다",
@@ -92,49 +106,49 @@ const app = () => {
       },
       htmlCss: {
          name: "HTML·CSS",
-         icon: "/img/htmlcss.png",
+         icon: html,
          type: "file",
          title: "HTML & CSS 🫧",
          tags: ["웹", "웹 표준", "Class"],
       },
       js: {
          name: "JavaScript",
-         icon: "/img/js.jpg",
+         icon: js,
          type: "file",
          title: "JavaScript ⚡",
          tags: ["웹", "ES6+", "동적"],
       },
       react: {
          name: "React",
-         icon: "/img/React.webp",
+         icon: react,
          type: "file",
          title: "React ❄️",
          tags: ["웹", "API", "Component", "DOM"],
       },
       figma: {
          name: "Figma",
-         icon: "/img/figma.svg",
+         icon: figma,
          type: "file",
          title: "Figma 📱",
          tags: ["웹", "UXUI", "협업"],
       },
       photoshop: {
          name: "Photoshop",
-         icon: "/img/photoshop.png",
+         icon: photoshop,
          type: "file",
          title: "Photoshop 📷",
          tags: ["Adobe", "편집", "보정"],
       },
       illustrator: {
          name: "Illustrator",
-         icon: "/img/illustrator.png",
+         icon: ill,
          type: "file",
          title: "Illustrator 🎨 ",
          tags: ["Adobe", "편집", "디자인"],
       },
       inDesign: {
          name: "inDesign",
-         icon: "/img/indesign.png",
+         icon: ind,
          type: "file",
          title: "inDesign 🪷",
          tags: ["Adobe", "편집", "인쇄"],
@@ -146,7 +160,7 @@ const app = () => {
       },
       phone: {
          name: "전화번호",
-         icon: "/img/phone.webp",
+         icon: phone,
          type: "file",
          title: "전화번호 📞",
          desc: "010-5214-5578\n\n 문의, 제안 등\n언제든 환영합니다!",
@@ -154,7 +168,7 @@ const app = () => {
       },
       email: {
          name: "이메일",
-         icon: "/img/email.png",
+         icon: email,
          type: "file",
          title: "이메일 📧",
          desc: "bag36166@gmail.com\n\n 문의, 제안 등\n언제든 환영합니다!",
@@ -162,7 +176,7 @@ const app = () => {
       },
       github: {
          name: "GitHub",
-         icon: "/img/github.png",
+         icon: github,
          type: "file",
          title: "GitHub ⭐",
          tags: ["git", "배포"],
