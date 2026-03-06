@@ -8,7 +8,7 @@ import FileItem from "./Component/FileItem";
 import Teskbar from "./Component/Teskbar";
 import sun from "/img/sun.png"
 import elysian from "/img/elysian.png"
-import tvn from "/img/tvn.png"
+import tvn from "/img/tvN.png"
 import pinny from "/img/pinny.jpg"
 import html from "/img/htmlcss.png"
 import js from "/img/js.jpg"
