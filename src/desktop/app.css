@@ -697,15 +697,22 @@ body {
 
 @media screen and (max-width: 499px) {
    .window {
-      max-width: 350px;
+      max-width: 300px;
       min-height: 130px;
    }
 
    .desktop_bg {
       position: absolute;
       inset: 0;
-      background: url(./img/bg_m.png) no-repeat;
+      background: url(/img/bg_m.png) no-repeat;
       background-size: cover;
       background-position: center;
+   }
+}
+
+@media screen and (max-width: 400px) {
+   .window {
+      max-width: 250px;
+      min-height: 130px;
    }
 }
