@@ -6,20 +6,21 @@ import DesktopIcon from "./Component/DesktopIcon";
 import TitleBtn from "./Component/TitleBtn";
 import FileItem from "./Component/FileItem";
 import Teskbar from "./Component/Teskbar";
-import sun from "/img/sun.png"
-import elysian from "/img/elysian.png"
-import tvn from "/img/tvN.png"
-import pinny from "/img/pinny.jpg"
-import html from "/img/htmlcss.png"
-import js from "/img/js.jpg"
-import react from "/img/React.webp"
-import figma from "/img/figma.svg"
-import photoshop from "/img/photoshop.png"
-import ill from "/img/illustrator.png"
-import ind from "/img/indesign.png"
-import phone from "/img/phone.webp"
-import email from "/img/email.png"
-import github from "/img/github.png"
+import Memo from "./Component/Memo";
+import sun from "/img/sun.png";
+import elysian from "/img/elysian.png";
+import tvn from "/img/tvN.png";
+import pinny from "/img/pinny.jpg";
+import html from "/img/htmlcss.png";
+import js from "/img/js.jpg";
+import react from "/img/React.webp";
+import figma from "/img/figma.webp";
+import photoshop from "/img/photoshop.png";
+import ill from "/img/illustrator.png";
+import ind from "/img/indesign.png";
+import phone from "/img/phone.webp";
+import email from "/img/email.png";
+import github from "/img/github.png";
 
 const app = () => {
    const FS = {
@@ -188,6 +189,7 @@ const app = () => {
       { key: "about", label: "About Me", icon: "📁" },
       { key: "projects", label: "Project", icon: "📁" },
       { key: "contact", label: "Contact", icon: "📁" },
+      { key: "notepad", label: "메모장", icon: "📝" },
    ];
 
    // ── 유틸 ─────────────────────────────────────────────────────
@@ -241,6 +243,15 @@ const app = () => {
    const resizeStart = useRef({});
 
    const lastTapTime = useRef({});
+
+   const [noteOpen, setNoteOpen] = useState(false);
+   const [noteVisible, setNoteVisible] = useState(false);
+   const [noteRect, setNoteRect] = useState({
+      left: 300,
+      top: 80,
+      width: 560,
+      height: 400,
+   });
 
    // 시계
    useEffect(() => {
@@ -570,6 +581,16 @@ const app = () => {
       resizing.current = false;
    };
 
+   const openNote = () => {
+      setNoteOpen(true);
+      requestAnimationFrame(() => setNoteVisible(true));
+   };
+
+   const closeNote = () => {
+      setNoteVisible(false);
+      setTimeout(() => setNoteOpen(false), 200);
+   };
+
    return (
       <div>
          {/* ── 데스크탑 ── */}
@@ -613,15 +634,19 @@ const app = () => {
                         e.stopPropagation();
                         setSelectedIcons(new Set([key]));
                      }}
-                     onDoubleClick={() => openFolder(key)}
-                     onTouchEnd={(
-                        e, // ← 추가
-                     ) =>
+                     onDoubleClick={() => {
+                        if (key === "notepad") openNote();
+                        else openFolder(key);
+                     }}
+                     onTouchEnd={(e) =>
                         handleTouchEnd(
                            e,
                            key,
-                           () => setSelectedIcons(new Set([key])), // 싱글탭 → 선택
-                           () => openFolder(key), // 더블탭 → 열기
+                           () => setSelectedIcons(new Set([key])),
+                           () => {
+                              if (key === "notepad") openNote();
+                              else openFolder(key);
+                           },
                         )
                      }
                   />
@@ -845,6 +870,14 @@ const app = () => {
                         />
                      ))}
                </div>
+            )}
+            {noteOpen && ( // ← 탐색기 밖으로 꺼내기
+               <Memo
+                  visible={noteVisible}
+                  onClose={closeNote}
+                  rect={noteRect}
+                  setRect={setNoteRect}
+               />
             )}
          </div>
 

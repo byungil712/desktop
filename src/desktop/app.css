@@ -129,7 +129,7 @@ body {
    flex: 1;
 }
 
-.window_top .window_title {
+.window_title {
    height: 32px;
    display: flex;
    align-items: center;
@@ -148,7 +148,7 @@ body {
    font-size: 14px;
 }
 
-.window_top .window_title .window_title_name {
+.window_title .window_title_name {
    font-size: 12px;
    flex: 1;
    color: #ccc;
@@ -616,35 +616,91 @@ body {
    cursor: pointer;
 }
 
-@media screen and (max-width: 1200px) {
+/* 메모장 메뉴바 */
+.note_menubar {
+   height: 28px;
+   display: flex;
+   align-items: center;
+   gap: 4px;
+   padding: 0 8px;
+   background-color: #1e1e1e;
+   border-bottom: 1px solid #606060;
+}
+
+.note_menu_btn {
+   height: 22px;
+   padding: 0 10px;
+   font-size: 12px;
+   font-family: inherit;
+   background: transparent;
+   border: none;
+   border-radius: 3px;
+   color: #ccc;
+   cursor: pointer;
+   transition: background 0.12s;
+}
+
+.note_menu_btn:hover {
+   background: rgba(255, 255, 255, 0.1);
+}
+
+/* 텍스트 영역 */
+.note_textarea {
+   flex: 1;
+   width: 100%;
+   padding: 12px;
+   background: #1a1a1a;
+   border: none;
+   outline: none;
+   color: #ddd;
+   font-size: 14px;
+   font-family: "Nanum Gothic", monospace;
+   line-height: 1.6;
+   resize: none;
+   overflow-y: auto;
+}
+
+/* @media screen and (max-width: 1200px) {
    .window {
-      min-width: 300px;
+      max-width: 670px;
       min-height: 180px;
    }
 }
 
 @media screen and (max-width: 900px) {
    .window {
-      min-width: 260px;
+      max-width: 600px;
+      min-height: 180px;
+   }
+}
+
+@media screen and (max-width: 750px) {
+   .window {
+      max-width: 500px;
       min-height: 180px;
    }
 }
 
 @media screen and (max-width: 640px) {
    .window {
-      min-width: 230px;
+      max-width: 430px;
       min-height: 180px;
    }
 }
 
 @media screen and (max-width: 575px) {
    .window {
-      min-width: 180px;
+      max-width: 380px;
       min-height: 130px;
    }
-}
+} */
 
 @media screen and (max-width: 499px) {
+   /* .window {
+      max-width: 350px;
+      min-height: 130px;
+   } */
+
    .desktop_bg {
       position: absolute;
       inset: 0;
