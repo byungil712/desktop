@@ -696,10 +696,10 @@ body {
 } */
 
 @media screen and (max-width: 499px) {
-   /* .window {
+   .window {
       max-width: 350px;
       min-height: 130px;
-   } */
+   }
 
    .desktop_bg {
       position: absolute;

@@ -14,6 +14,7 @@ import pinny from "/img/pinny.jpg";
 import html from "/img/htmlcss.png";
 import js from "/img/js.jpg";
 import react from "/img/React.webp";
+import redux from "/img/redux.png";
 import figma from "/img/figma.webp";
 import photoshop from "/img/photoshop.png";
 import ill from "/img/illustrator.png";
@@ -21,6 +22,7 @@ import ind from "/img/indesign.png";
 import phone from "/img/phone.webp";
 import email from "/img/email.png";
 import github from "/img/github.png";
+import memo from "/img/memo.png";
 
 const app = () => {
    const FS = {
@@ -99,6 +101,7 @@ const app = () => {
             "htmlCss",
             "js",
             "react",
+            "redux",
             "figma",
             "photoshop",
             "illustrator",
@@ -124,6 +127,13 @@ const app = () => {
          icon: react,
          type: "file",
          title: "React ❄️",
+         tags: ["웹", "API", "Component", "DOM"],
+      },
+      redux: {
+         name: "Redux",
+         icon: redux,
+         type: "file",
+         title: "Redux ❄️",
          tags: ["웹", "API", "Component", "DOM"],
       },
       figma: {
@@ -189,7 +199,7 @@ const app = () => {
       { key: "about", label: "About Me", icon: "📁" },
       { key: "projects", label: "Project", icon: "📁" },
       { key: "contact", label: "Contact", icon: "📁" },
-      { key: "notepad", label: "메모장", icon: "📝" },
+      { key: "notepad", label: "메모장", icon: memo },
    ];
 
    // ── 유틸 ─────────────────────────────────────────────────────
