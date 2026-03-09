@@ -759,4 +759,8 @@ body {
       height: 38px;
       object-fit: contain;
    }
+
+   .window{
+      min-width: 300px;
+   }
 }

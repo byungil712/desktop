@@ -227,7 +227,7 @@ const app = () => {
    const [savedRect, setSavedRect] = useState(null);
 
    // 바탕화면 드래그 영역
-   const [dragBox, setDragBox] = useState(null); 
+   const [dragBox, setDragBox] = useState(null);
    const dragSelecting = useRef(false);
    const dragOrigin = useRef({ x: 0, y: 0 });
    const desktopRef = useRef(null);
@@ -389,7 +389,7 @@ const app = () => {
             const dx = e.clientX - x;
             const dy = e.clientY - y;
             const dir = resizeDir.current;
-            const minW = 360,
+            const minW = 300,
                minH = 240;
             let nl = left,
                nt = top,
@@ -574,7 +574,7 @@ const app = () => {
       const dx = touch.clientX - x;
       const dy = touch.clientY - y;
       const dir = resizeDir.current;
-      const minW = 360,
+      const minW = 300,
          minH = 240;
       let nl = left,
          nt = top,
@@ -677,8 +677,13 @@ const app = () => {
                         handleTouchEnd(
                            e,
                            key,
-                           () => setSelectedIcons(new Set([key])),
                            () => {
+                              // 싱글탭
+                              if (key === "notepad") openNote();
+                              else openFolder(key);
+                           },
+                           () => {
+                              // 더블탭
                               if (key === "notepad") openNote();
                               else openFolder(key);
                            },
