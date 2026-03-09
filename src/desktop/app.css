@@ -28,15 +28,15 @@ body {
 /* 바탕화면 드래그 영역 */
 .bg_drag {
    position: absolute;
-   background: rgba(100, 160, 255, 0.12);
-   border: 1px solid rgba(120, 180, 255, 0.55);
    z-index: 1;
+   border: 1px solid rgba(120, 180, 255, 0.55);
+   background: rgba(100, 160, 255, 0.12);
 }
 
 /* 데스크탑 */
 .desktop {
    width: 100vw;
-   height: calc(100vh - 40px);
+   height: calc(100vh - 50px);
    position: relative;
 }
 
@@ -554,7 +554,7 @@ body {
    cursor: sw-resize;
 }
 
-/* ── 태스크바 ─────────────────────────────────────────────── */
+/* 테스크바 */
 .taskbar {
    height: 50px;
    position: fixed;
@@ -627,14 +627,13 @@ body {
 }
 
 .calendar {
-   width: 280px;
+   max-width: 280px;
    position: fixed;
-   bottom: 58px; /* 태스크바 바로 위 */
+   bottom: 58px;
    right: 10px;
    padding: 16px;
    z-index: 2000;
    animation: fadeIn 0.15s ease;
-   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
    border: 1px solid rgba(255, 255, 255, 0.07);
    border-radius: 8px;
    background-color: rgba(8, 8, 18, 0.92);
@@ -709,6 +708,109 @@ body {
    border-radius: 100%;
 }
 
+.start_menu {
+   max-width: 400px;
+   padding: 16px;
+   position: fixed;
+   bottom: 58px;
+   animation: fadeIn 0.15s ease;
+   border-radius: 8px;
+   border: 1px solid rgba(255, 255, 255, 0.07);
+   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+   background-color: rgba(8, 8, 18, 0.92);
+}
+
+.start_section_title {
+   font-size: 14px;
+   font-weight: 700;
+   color: #aaa;
+}
+
+.start_pinned {
+   display: grid;
+   grid-template-columns: repeat(6, 1fr);
+   row-gap: 16px;
+   margin-bottom: 32px;
+}
+
+.start_app {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 10px 4px;
+   border-radius: 6px;
+   cursor: pointer;
+   transition: background 0.12s;
+}
+
+.start_app:hover {
+   background: rgba(255, 255, 255, 0.08);
+}
+
+.start_app_icon {
+   font-size: 28px;
+}
+
+.start_app_name {
+   font-size: 13px;
+   text-align: center;
+   color: #ccc;
+   line-height: 130%;
+}
+
+.start_power button {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 8px;
+   padding: 8px 16px;
+   background-color: #fff;
+   border: none;
+   border-radius: 16px;
+   color: #000;
+}
+
+/* 전원누른 뒤 */
+
+.thanks {
+   width: 100%;
+   height: 100vh;
+   position: absolute;
+   inset: 0;
+   z-index: 1000;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   animation: fadeIn 0.3s ease;
+   background: rgba(15, 15, 20, 0.9);
+   color: #fff;
+}
+
+.thanks .thanks_text {
+   width: 100%;
+   height: 100vh;
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   order: 2;
+   font-size: 28px;
+}
+
+.thanks .thanks_close {
+   position: absolute;
+   padding: 32px;
+   z-index: 100;
+}
+
+.thanks .thanks_close button {
+   padding: 8px 16px;
+   border-radius: 24px;
+   background-color: #fff;
+   color: #000;
+   cursor: pointer;
+}
+
 /* 메모장 메뉴바 */
 .note_menubar {
    height: 28px;
@@ -760,7 +862,37 @@ body {
       object-fit: contain;
    }
 
-   .window{
+   .window {
       min-width: 300px;
+   }
+}
+
+@media screen and (max-width: 460px) {
+   .calendar {
+      max-width: 330px;
+      position: fixed;
+      bottom: 58px;
+      right: 10px;
+      padding: 16px;
+      z-index: 1000;
+      animation: fadeIn 0.15s ease;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      background-color: rgba(8, 8, 18, 0.92);
+   }
+
+   .start_menu {
+      max-width: 355px;
+   }
+
+   .start_pinned {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      row-gap: 16px;
+      margin-bottom: 16px;
+   }
+
+   .thanks .thanks_text{
+      font-size: 24px;
    }
 }

@@ -213,7 +213,6 @@ const app = () => {
    const [preview, setPreview] = useState(null);
    const [selectedIcons, setSelectedIcons] = useState(new Set());
    const [selectedItem, setSelectedItem] = useState(null);
-   const [time, setTime] = useState(new Date());
    const [isMaximized, setIsMaximized] = useState(false);
    const [winRect, setWinRect] = useState(() => {
       const w = Math.min(720, window.innerWidth - 20);
@@ -244,17 +243,6 @@ const app = () => {
       const left = Math.max(0, (window.innerWidth - w) / 2);
       return { left, top: 80, width: w, height: h };
    });
-
-   // 시계
-   useEffect(() => {
-      const t = setInterval(() => setTime(new Date()), 1000);
-      return () => clearInterval(t);
-   }, []);
-
-   const fmt = (n) => String(n).padStart(2, "0");
-   const hours24 = time.getHours();
-   const ampm = hours24 < 12 ? "오전" : "오후";
-   const hours12 = hours24 % 12 || 12;
 
    // ── 폴더/파일 열기
    const openFolder = useCallback(
@@ -382,19 +370,36 @@ const app = () => {
             const dir = resizeDir.current;
             const minW = 300,
                minH = 240;
+
+            const desktop = document.getElementById("desktop");
+            const maxW = desktop ? desktop.clientWidth : window.innerWidth;
+            const maxH = desktop
+               ? desktop.clientHeight
+               : window.innerHeight - 50;
+
             let nl = left,
                nt = top,
                nw = width,
                nh = height;
-            if (dir.includes("e")) nw = Math.max(minW, width + dx);
-            if (dir.includes("s")) nh = Math.max(minH, height + dy);
+            if (dir.includes("e"))
+               nw = Math.min(maxW - left, Math.max(minW, width + dx));
+            if (dir.includes("s"))
+               nh = Math.min(maxH - top, Math.max(minH, height + dy));
             if (dir.includes("w")) {
-               nw = Math.max(minW, width - dx);
+               nw = Math.min(maxW, Math.max(minW, width - dx));
                nl = left + (width - nw);
+               if (nl < 0) {
+                  nw = nw + nl;
+                  nl = 0;
+               }
             }
             if (dir.includes("n")) {
-               nh = Math.max(minH, height - dy);
+               nh = Math.min(maxH, Math.max(minH, height - dy));
                nt = top + (height - nh);
+               if (nt < 0) {
+                  nh = nh + nt;
+                  nt = 0;
+               }
             }
             setWinRect({ left: nl, top: nt, width: nw, height: nh });
          }
@@ -551,20 +556,34 @@ const app = () => {
       const dir = resizeDir.current;
       const minW = 300,
          minH = 240;
+
+      const maxW = window.innerWidth;
+      const maxH = window.innerHeight - 50;
+
       let nl = left,
          nt = top,
          nw = width,
          nh = height;
 
-      if (dir.includes("e")) nw = Math.max(minW, width + dx);
-      if (dir.includes("s")) nh = Math.max(minH, height + dy);
+      if (dir.includes("e"))
+         nw = Math.min(maxW - left, Math.max(minW, width + dx));
+      if (dir.includes("s"))
+         nh = Math.min(maxH - top, Math.max(minH, height + dy));
       if (dir.includes("w")) {
-         nw = Math.max(minW, width - dx);
+         nw = Math.min(maxW, Math.max(minW, width - dx));
          nl = left + (width - nw);
+         if (nl < 0) {
+            nw = nw + nl;
+            nl = 0;
+         }
       }
       if (dir.includes("n")) {
-         nh = Math.max(minH, height - dy);
+         nh = Math.min(maxH, Math.max(minH, height - dy));
          nt = top + (height - nh);
+         if (nt < 0) {
+            nh = nh + nt;
+            nt = 0;
+         }
       }
       setWinRect({ left: nl, top: nt, width: nw, height: nh });
    };
@@ -876,6 +895,8 @@ const app = () => {
 
          <Teskbar
             node={node}
+            openFolder={openFolder}
+            openNote={openNote}
             windowOpen={windowOpen}
             visible={visible}
             setVisible={setVisible}

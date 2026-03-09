@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMicrosoft } from "@fortawesome/free-brands-svg-icons";
-import folder from "/img/folder.png";
+import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import folder11 from "/img/folder11.webp";
+import pc11 from "/img/pc11.avif";
+import file from "/img/file.png";
 
-const Teskbar = ({ node, windowOpen, visible, setVisible }) => {
+const Teskbar = ({
+   node,
+   openFolder,
+   openNote,
+   windowOpen,
+   visible,
+   setVisible,
+}) => {
    const [time, setTime] = useState(new Date());
    const [showCal, setShowCal] = useState(false);
    const [calDate, setCalDate] = useState(new Date());
+   const [showStart, setShowStart] = useState(false);
+   const [showThanks, setShowThanks] = useState(false)
 
    // 시계
    useEffect(() => {
@@ -25,14 +36,14 @@ const Teskbar = ({ node, windowOpen, visible, setVisible }) => {
 
    // 캘린더 날짜
    const year = calDate.getFullYear();
-   const month = calDate.getMonth(); 
+   const month = calDate.getMonth();
 
    const firstDay = new Date(year, month, 1).getDay();
-   const lastDate = new Date(year, month + 1, 0).getDate(); 
+   const lastDate = new Date(year, month + 1, 0).getDate();
 
    // 캘린더 배열
    const cells = [];
-   for (let i = 0; i < firstDay; i++) cells.push(null); 
+   for (let i = 0; i < firstDay; i++) cells.push(null);
    for (let d = 1; d <= lastDate; d++) cells.push(d);
 
    const today = new Date();
@@ -43,6 +54,18 @@ const Teskbar = ({ node, windowOpen, visible, setVisible }) => {
 
    const prevMonth = () => setCalDate(new Date(year, month - 1, 1));
    const nextMonth = () => setCalDate(new Date(year, month + 1, 1));
+
+   const pinnedApps = [
+      { icon: pc11, name: "내 PC", onClick: () => openFolder("root") },
+      { icon: folder11, name: "About Me", onClick: () => openFolder("about") },
+      {
+         icon: folder11,
+         name: "Project",
+         onClick: () => openFolder("projects"),
+      },
+      { icon: folder11, name: "Contact", onClick: () => openFolder("contact") },
+      { icon: file, name: "메모장", onClick: () => openNote() },
+   ];
 
    return (
       <>
@@ -84,7 +107,10 @@ const Teskbar = ({ node, windowOpen, visible, setVisible }) => {
          )}
 
          <div className="taskbar">
-            <div className="taskbar_icon">
+            <div
+               className="taskbar_icon"
+               onClick={() => setShowStart((v) => !v)}
+            >
                <FontAwesomeIcon icon={faMicrosoft} />
             </div>
 
@@ -100,11 +126,58 @@ const Teskbar = ({ node, windowOpen, visible, setVisible }) => {
                </button>
             )}
 
-            <div className="taskbar_clock" onClick={() => setShowCal(v => !v)}>
+            {showStart && (
+               <div className="start_menu">
+                  <div className="start_section_title">
+                     <span>고정됨</span>
+                  </div>
+                  <div className="start_pinned">
+                     {pinnedApps.map((app) => (
+                        <div
+                           key={app.name}
+                           className="start_app"
+                           onClick={() => {
+                              app.onClick();
+                              setShowStart(false);
+                           }}
+                        >
+                           <div className="start_app_icon">
+                              <img src={app.icon} />
+                           </div>
+                           <div className="start_app_name">{app.name}</div>
+                        </div>
+                     ))}
+                  </div>
+                  <div className="start_power">
+                     <button type="button" onClick={() => setShowThanks((v) => !v)}>
+                        <FontAwesomeIcon icon={faPowerOff} />
+                        <span>시스템 종료</span>
+                     </button>
+                  </div>
+               </div>
+            )}
+
+            <div
+               className="taskbar_clock"
+               onClick={() => setShowCal((v) => !v)}
+            >
                <div>{clockStr}</div>
                <div>{dateStr}</div>
             </div>
          </div>
+
+         {
+            showThanks && (
+               <div className="thanks">
+                  <div className="thanks_text">
+                     <h3>Thanks for Watching</h3>
+                  </div>
+                  <div className="thanks_close">
+                     <button type="button" onClick={() => setShowThanks((v) => !v)}>닫기</button>
+                  </div>
+               </div>
+            )
+         }
       </>
    );
 };
