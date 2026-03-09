@@ -22,18 +22,23 @@ import ind from "/img/indesign.png";
 import phone from "/img/phone.webp";
 import email from "/img/email.png";
 import github from "/img/github.png";
-import memo from "/img/memo.png";
+import memo from "/img/memo.webp";
+import memo11 from "/img/memo11.png";
+import folder from "/img/folder.png";
+import folder11 from "/img/folder11.webp";
+import pc from "/img/pc.png";
+import pc11 from "/img/pc11.avif";
 
 const app = () => {
    const FS = {
       root: {
          name: "내 PC",
-         icon: "🖥️",
+         icon: pc11,
          children: ["about", "projects", "contact"],
       },
       about: {
          name: "About Me",
-         icon: "📁",
+         icon: folder11,
          children: ["profile", "photo", "skills"],
       },
       profile: {
@@ -54,7 +59,7 @@ const app = () => {
       },
       projects: {
          name: "Project",
-         icon: "📁",
+         icon: folder11,
          children: ["proj1", "proj2", "proj3", "proj4"],
       },
       proj1: {
@@ -96,7 +101,7 @@ const app = () => {
       },
       skills: {
          name: "Skills",
-         icon: "📁",
+         icon: folder11,
          children: [
             "htmlCss",
             "js",
@@ -166,7 +171,7 @@ const app = () => {
       },
       contact: {
          name: "Contact",
-         icon: "📁",
+         icon: folder11,
          children: ["phone", "email", "github"],
       },
       phone: {
@@ -196,10 +201,10 @@ const app = () => {
    };
 
    const desktopIcons = [
-      { key: "about", label: "About Me", icon: "📁" },
-      { key: "projects", label: "Project", icon: "📁" },
-      { key: "contact", label: "Contact", icon: "📁" },
-      { key: "notepad", label: "메모장", icon: memo },
+      { key: "about", label: "About Me", icon: folder11 },
+      { key: "projects", label: "Project", icon: folder11 },
+      { key: "contact", label: "Contact", icon: folder11 },
+      { key: "notepad", label: "메모장", icon: memo11 },
    ];
 
    // ── 유틸 ─────────────────────────────────────────────────────
@@ -631,7 +636,7 @@ const app = () => {
             {/* 데스크탑 아이콘 */}
             <div className="desktop_icons" ref={iconsAreaRef}>
                {[
-                  { key: "root", label: "내 PC", icon: "🖥️" },
+                  { key: "root", label: "내 PC", icon: pc11 },
                   ...desktopIcons,
                ].map(({ key, label, icon }) => (
                   <DesktopIcon
@@ -685,7 +690,7 @@ const app = () => {
                         onTouchEnd={onTitleTouchEnd}
                      >
                         <span className="window_title_icon">
-                           {node?.icon || "📁"}
+                           <img src={node?.icon || folder11}/>
                         </span>
                         <span className="window_title_name">
                            {node?.name || "폴더"}

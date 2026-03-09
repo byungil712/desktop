@@ -44,7 +44,7 @@ body {
    height: 100vh;
    position: absolute;
    inset: 0;
-   background: url(/img/bg.jpg) no-repeat;
+   background: url(/img/bg11.jpg) no-repeat;
    background-size: cover;
    background-position: center;
 }
@@ -111,7 +111,9 @@ body {
    transition:
       opacity 0.2s ease,
       transform 0.2s ease;
+   /* background-color: #fff; */
    background-color: #111;
+   /* border: 2px solid #0051ff; */
    border: 1px solid #606060;
    border-radius: 6px;
    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75);
@@ -135,7 +137,9 @@ body {
    align-items: center;
    padding: 0 8px;
    gap: 8px;
+   /* background: linear-gradient(180deg,rgba(125, 164, 255, 0.85) 0%, rgba(0, 81, 255, 1) 28%, rgba(0, 81, 255, 1) 70%, rgba(125, 164, 255, 0.85) 100%); */
    background-color: #262626;
+   /* border-bottom: 1px solid #aaaaaa; */
    border-bottom: 1px solid #606060;
    cursor: move;
    z-index: 100;
@@ -146,6 +150,10 @@ body {
    justify-content: center;
    align-items: center;
    font-size: 14px;
+}
+
+.window_title .window_title_icon img{
+   width: 20px;
 }
 
 .window_title .window_title_name {
@@ -192,7 +200,9 @@ body {
    align-items: center;
    gap: 8px;
    padding: 0 8px;
+   /* background-color: #c5c5c5; */
    background-color: #212121;
+   /* border-bottom: 1px solid #aaa; */
    border-bottom: 1px solid #606060;
    z-index: 100;
 }
@@ -712,7 +722,7 @@ body {
 
 @media screen and (max-width: 400px) {
    .window {
-      max-width: 250px;
+      width: 250px;
       min-height: 130px;
    }
 }
