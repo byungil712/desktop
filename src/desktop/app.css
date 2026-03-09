@@ -627,7 +627,8 @@ body {
 }
 
 .calendar {
-   max-width: 280px;
+   width: 100%;
+   max-width: 300px;
    position: fixed;
    bottom: 58px;
    right: 10px;
@@ -869,7 +870,8 @@ body {
 
 @media screen and (max-width: 460px) {
    .calendar {
-      max-width: 330px;
+      width: 100%;
+      max-width: 260px;
       position: fixed;
       bottom: 58px;
       right: 10px;
@@ -894,5 +896,25 @@ body {
 
    .thanks .thanks_text{
       font-size: 24px;
+   }
+}
+
+@media screen and (max-width: 400px) {
+   .calendar {
+      width: 100%;
+      max-width: 240px;
+      position: fixed;
+      bottom: 58px;
+      right: 10px;
+      padding: 16px;
+      z-index: 1000;
+      animation: fadeIn 0.15s ease;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      background-color: rgba(8, 8, 18, 0.92);
+   }
+
+   .calendar_grid{
+      gap: 4px;
    }
 }
