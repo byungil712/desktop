@@ -152,7 +152,7 @@ body {
    font-size: 14px;
 }
 
-.window_title .window_title_icon img{
+.window_title .window_title_icon img {
    width: 20px;
 }
 
@@ -565,7 +565,7 @@ body {
    align-items: center;
    padding: 0 10px;
    gap: 4px;
-   z-index: 1000;
+   z-index: 100;
    backdrop-filter: blur(20px);
    border-top: 1px solid rgba(255, 255, 255, 0.07);
    background-color: rgba(8, 8, 18, 0.92);
@@ -612,8 +612,8 @@ body {
    border-bottom-color: #6090ff;
 }
 
-.taskbar_btn span {
-   font-size: 14px;
+.taskbar_btn span img {
+   width: 14px;
 }
 
 .taskbar_clock {
@@ -624,6 +624,89 @@ body {
    line-height: 150%;
    color: #fff;
    cursor: pointer;
+}
+
+.calendar {
+   width: 280px;
+   position: fixed;
+   bottom: 58px; /* 태스크바 바로 위 */
+   right: 10px;
+   padding: 16px;
+   z-index: 2000;
+   animation: fadeIn 0.15s ease;
+   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+   border: 1px solid rgba(255, 255, 255, 0.07);
+   border-radius: 8px;
+   background-color: rgba(8, 8, 18, 0.92);
+}
+
+.calendar_header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 12px;
+}
+
+.calendar_title {
+   font-size: 14px;
+   font-weight: 700;
+   color: #ddd;
+}
+
+.calendar_nav {
+   width: 28px;
+   height: 28px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 18px;
+   background: transparent;
+   border: none;
+   border-radius: 4px;
+   color: #aaa;
+   cursor: pointer;
+   transition: background 0.12s;
+}
+
+.calendar_nav:hover {
+   background: rgba(255, 255, 255, 0.1);
+   color: #fff;
+}
+
+/* 날짜 그리드 - 7열 */
+.calendar_grid {
+   display: grid;
+   grid-template-columns: repeat(7, 1fr);
+   gap: 8px;
+}
+
+.calendar_weekday {
+   font-size: 14px;
+   text-align: center;
+   padding: 4px 0;
+   color: #aaa;
+}
+
+.calendar_day {
+   font-size: 14px;
+   text-align: center;
+   padding: 4px;
+   border-radius: 4px;
+   color: #ccc;
+   cursor: default;
+   transition: background 0.1s;
+}
+
+.calendar_day:hover:not(.calendar_day_empty) {
+   background: rgba(255, 255, 255, 0.08);
+}
+
+/* 오늘 날짜 강조 */
+.calendar_day_today {
+   background: rgba(100, 140, 255, 0.35) !important;
+   color: #aac0ff;
+   font-weight: 700;
+   border-radius: 100%;
 }
 
 /* 메모장 메뉴바 */

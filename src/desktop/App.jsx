@@ -39,7 +39,7 @@ const app = () => {
       about: {
          name: "About Me",
          icon: folder11,
-         children: ["profile", "photo", "skills"],
+         children: ["profile", "skills"],
       },
       profile: {
          name: "프로필",
@@ -48,14 +48,6 @@ const app = () => {
          title: "안녕하세요! 👋 ",
          desc: "웹 퍼블리셔 [박병일]입니다.\nHTML·CSS·JS·REACT를 기반으로\n다양한 화면에서도 일관된 디자인을 유지하게하고, \n 반응형이 잘 작동되는 퍼블리싱을 추구합니다.\n\n접근성과 클린코드을 중시하며\n디자이너와 개발자 사이의 가교 역할을 합니다.",
          tags: ["HTML5", "CSS3", "JavaScript", "React"],
-      },
-      photo: {
-         name: "프로필사진.png",
-         icon: "🖼️",
-         type: "file",
-         title: "🖼️ 프로필 사진",
-         desc: "웹 퍼블리셔 [이름]\n여기에 간단한 소개 한 줄을 추가하세요.",
-         tags: ["이미지"],
       },
       projects: {
          name: "Project",
@@ -690,7 +682,7 @@ const app = () => {
                         onTouchEnd={onTitleTouchEnd}
                      >
                         <span className="window_title_icon">
-                           <img src={node?.icon || folder11}/>
+                           <img src={node?.icon || folder}/>
                         </span>
                         <span className="window_title_name">
                            {node?.name || "폴더"}
