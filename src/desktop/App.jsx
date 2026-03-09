@@ -28,6 +28,7 @@ import folder from "/img/folder.png";
 import folder11 from "/img/folder11.webp";
 import pc from "/img/pc.png";
 import pc11 from "/img/pc11.avif";
+import file from "/img/file.png";
 
 const app = () => {
    const FS = {
@@ -43,7 +44,7 @@ const app = () => {
       },
       profile: {
          name: "프로필",
-         icon: "📄",
+         icon: file,
          type: "file",
          title: "안녕하세요! 👋 ",
          desc: "웹 퍼블리셔 [박병일]입니다.\nHTML·CSS·JS·REACT를 기반으로\n다양한 화면에서도 일관된 디자인을 유지하게하고, \n 반응형이 잘 작동되는 퍼블리싱을 추구합니다.\n\n접근성과 클린코드을 중시하며\n디자이너와 개발자 사이의 가교 역할을 합니다.",
@@ -52,7 +53,7 @@ const app = () => {
       projects: {
          name: "Project",
          icon: folder11,
-         children: ["proj1", "proj2", "proj3", "proj4"],
+         children: ["proj1", "proj2", "proj3"],
       },
       proj1: {
          name: "날씨 앱",
@@ -80,15 +81,6 @@ const app = () => {
          title: "tvN 리디자인 🚩",
          desc: "현재 tvN 홈페이지는 다소 복잡한 \n  네비게이션과 시각적피로도, 접근성 측면에서 \n 문제가 있다고 생각하여 OTT 디자인으로 \n 재해석하여 리디자인 해보았습니다",
          tags: ["tvN", "OTT", "리디자인"],
-         link: "#",
-      },
-      proj4: {
-         name: "브랜딩",
-         icon: pinny,
-         type: "file",
-         title: "브랜딩 & 포스터디자인",
-         desc: "계절에 맞게 즐길 수 있는 각종 스포츠를 \n 제공하는  복합 레저, 서비스 기업으로, \n React를 활용하여 클론코딩 했습니다",
-         tags: ["브랜딩", "포스터", "PDF"],
          link: "#",
       },
       skills: {
@@ -227,16 +219,15 @@ const app = () => {
    const [selectedItem, setSelectedItem] = useState(null);
    const [time, setTime] = useState(new Date());
    const [isMaximized, setIsMaximized] = useState(false);
-   const [winRect, setWinRect] = useState({
-      left: 180,
-      top: 50,
-      width: 720,
-      height: 480,
+   const [winRect, setWinRect] = useState(() => {
+      const w = Math.min(720, window.innerWidth - 20);
+      const h = Math.min(480, window.innerHeight - 100);
+      return { left: 10, top: 50, width: w, height: h };
    });
    const [savedRect, setSavedRect] = useState(null);
 
    // 바탕화면 드래그 영역
-   const [dragBox, setDragBox] = useState(null); // { x, y, w, h } 렌더용
+   const [dragBox, setDragBox] = useState(null); 
    const dragSelecting = useRef(false);
    const dragOrigin = useRef({ x: 0, y: 0 });
    const desktopRef = useRef(null);
@@ -253,11 +244,11 @@ const app = () => {
 
    const [noteOpen, setNoteOpen] = useState(false);
    const [noteVisible, setNoteVisible] = useState(false);
-   const [noteRect, setNoteRect] = useState({
-      left: 300,
-      top: 80,
-      width: 560,
-      height: 400,
+   const [noteRect, setNoteRect] = useState(() => {
+      const w = Math.min(520, window.innerWidth - 20);
+      const h = Math.min(400, window.innerHeight - 100);
+      const left = Math.max(0, (window.innerWidth - w) / 2);
+      return { left, top: 80, width: w, height: h };
    });
 
    // 시계
@@ -383,10 +374,14 @@ const app = () => {
          if (dragging.current) {
             const desktop = document.getElementById("desktop");
             if (!desktop) return;
+
+            const actualW = winRef.current?.offsetWidth || winRect.width;
+            const actualH = winRef.current?.offsetHeight || winRect.height;
+
             let x = e.clientX - dragOffset.current.x;
             let y = e.clientY - dragOffset.current.y;
-            x = Math.max(0, Math.min(x, desktop.clientWidth - winRect.width));
-            y = Math.max(0, Math.min(y, desktop.clientHeight - winRect.height));
+            x = Math.max(0, Math.min(x, desktop.clientWidth - actualW));
+            y = Math.max(0, Math.min(y, desktop.clientHeight - actualH - 10));
             setWinRect((r) => ({ ...r, left: x, top: y }));
          }
          if (resizing.current) {
@@ -450,8 +445,15 @@ const app = () => {
    };
 
    useEffect(() => {
+      const getCoords = (e) => {
+         // 터치, 마우스 좌표 통합
+         const source = e.touches ? e.touches[0] : e;
+         return { clientX: source.clientX, clientY: source.clientY };
+      };
+
       const onMove = (e) => {
          if (!dragSelecting.current || !desktopRef.current) return;
+         const { clientX, clientY } = getCoords(e);
          const rect = desktopRef.current.getBoundingClientRect();
          const cx = Math.min(Math.max(e.clientX - rect.left, 0), rect.width);
          const cy = Math.min(Math.max(e.clientY - rect.top, 0), rect.height);
@@ -492,9 +494,13 @@ const app = () => {
 
       window.addEventListener("mousemove", onMove);
       window.addEventListener("mouseup", onUp);
+      window.addEventListener("touchmove", onMove);
+      window.addEventListener("touchend", onUp);
       return () => {
          window.removeEventListener("mousemove", onMove);
          window.removeEventListener("mouseup", onUp);
+         window.removeEventListener("touchmove", onMove);
+         window.removeEventListener("touchend", onUp);
       };
    }, []);
    const node = currentKey ? FS[currentKey] : null;
@@ -532,10 +538,14 @@ const app = () => {
       const touch = e.touches[0];
       const desktop = desktopRef.current;
       if (!desktop) return;
+
+      const actualW = winRef.current?.offsetWidth || winRect.width;
+      const actualH = winRef.current?.offsetHeight || winRect.height;
+
       let x = touch.clientX - dragOffset.current.x;
       let y = touch.clientY - dragOffset.current.y;
-      x = Math.max(0, Math.min(x, desktop.clientWidth - winRect.width));
-      y = Math.max(0, Math.min(y, desktop.clientHeight - winRect.height));
+      x = Math.max(0, Math.min(x, desktop.clientWidth - actualW));
+      y = Math.max(0, Math.min(y, desktop.clientHeight - actualH - 10));
       setWinRect((r) => ({ ...r, left: x, top: y }));
    };
 
@@ -606,8 +616,26 @@ const app = () => {
             ref={desktopRef}
             className="desktop"
             onMouseDown={onDesktopMouseDown}
-            onClick={() => {
-               if (!dragSelecting.current) setSelectedIcons(new Set());
+            onTouchStart={(e) => {
+               const touch = e.touches[0];
+               if (
+                  e.target !== desktopRef.current &&
+                  e.target.className !== "desktop_bg"
+               )
+                  return;
+               dragSelecting.current = true;
+               const rect = desktopRef.current.getBoundingClientRect();
+               dragOrigin.current = {
+                  x: touch.clientX - rect.left,
+                  y: touch.clientY - rect.top,
+               };
+               setDragBox({
+                  x: dragOrigin.current.x,
+                  y: dragOrigin.current.y,
+                  w: 0,
+                  h: 0,
+               });
+               setSelectedIcons(new Set());
             }}
          >
             <div className="desktop_bg"></div>
@@ -682,7 +710,7 @@ const app = () => {
                         onTouchEnd={onTitleTouchEnd}
                      >
                         <span className="window_title_icon">
-                           <img src={node?.icon || folder}/>
+                           <img src={node?.icon || folder} />
                         </span>
                         <span className="window_title_name">
                            {node?.name || "폴더"}

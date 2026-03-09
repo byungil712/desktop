@@ -12,6 +12,7 @@ const Memo = ({ visible, onClose, rect, setRect }) => {
    const resizing = useRef(false);
    const resizeDir = useRef("");
    const resizeStart = useRef({});
+   const memoRef = useRef(null);
 
    // 저장
    const save = () => {
@@ -62,12 +63,15 @@ const Memo = ({ visible, onClose, rect, setRect }) => {
          const clientX = e.touches ? e.touches[0].clientX : e.clientX;
          const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
+         const actualW = memoRef.current?.offsetWidth || rect.width;
+         const actualH = memoRef.current?.offsetHeight || rect.height;
+
          // 창 이동
          if (dragging.current) {
             let x = clientX - dragOffset.current.x;
             let y = clientY - dragOffset.current.y;
-            x = Math.max(0, Math.min(x, window.innerWidth - rect.width));
-            y = Math.max(0, Math.min(y, window.innerHeight - rect.height));
+            x = Math.max(0, Math.min(x, window.innerWidth - actualW));
+            y = Math.max(0, Math.min(y, window.innerHeight - actualH));
             setRect((r) => ({ ...r, left: x, top: y }));
          }
 
@@ -118,6 +122,7 @@ const Memo = ({ visible, onClose, rect, setRect }) => {
    return (
       <div
          className={`window ${visible ? "window_visible" : ""}`}
+         ref={memoRef}
          style={{
             left: rect.left,
             top: rect.top,

@@ -753,59 +753,10 @@ body {
    overflow-y: auto;
 }
 
-/* @media screen and (max-width: 1200px) {
-   .window {
-      max-width: 670px;
-      min-height: 180px;
-   }
-}
-
-@media screen and (max-width: 900px) {
-   .window {
-      max-width: 600px;
-      min-height: 180px;
-   }
-}
-
-@media screen and (max-width: 750px) {
-   .window {
-      max-width: 500px;
-      min-height: 180px;
-   }
-}
-
-@media screen and (max-width: 640px) {
-   .window {
-      max-width: 430px;
-      min-height: 180px;
-   }
-}
-
-@media screen and (max-width: 575px) {
-   .window {
-      max-width: 380px;
-      min-height: 130px;
-   }
-} */
-
-@media screen and (max-width: 499px) {
-   .window {
-      max-width: 300px;
-      min-height: 130px;
-   }
-
-   .desktop_bg {
-      position: absolute;
-      inset: 0;
-      background: url(/img/bg_m.png) no-repeat;
-      background-size: cover;
-      background-position: center;
-   }
-}
-
-@media screen and (max-width: 400px) {
-   .window {
-      width: 250px;
-      min-height: 130px;
+@media screen and (max-width: 500px) {
+   .desktop_icons .desktop_icon .desktop_icon_img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
    }
 }
