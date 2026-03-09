@@ -10,7 +10,6 @@ import Memo from "./Component/Memo";
 import sun from "/img/sun.png";
 import elysian from "/img/elysian.png";
 import tvn from "/img/tvN.png";
-import pinny from "/img/pinny.jpg";
 import html from "/img/htmlcss.png";
 import js from "/img/js.jpg";
 import react from "/img/React.webp";
@@ -22,11 +21,8 @@ import ind from "/img/indesign.png";
 import phone from "/img/phone.webp";
 import email from "/img/email.png";
 import github from "/img/github.png";
-import memo from "/img/memo.webp";
 import memo11 from "/img/memo11.png";
-import folder from "/img/folder.png";
 import folder11 from "/img/folder11.webp";
-import pc from "/img/pc.png";
 import pc11 from "/img/pc11.avif";
 import file from "/img/file.png";
 
@@ -240,8 +236,6 @@ const app = () => {
    const resizeDir = useRef("");
    const resizeStart = useRef({});
 
-   const lastTapTime = useRef({});
-
    const [noteOpen, setNoteOpen] = useState(false);
    const [noteVisible, setNoteVisible] = useState(false);
    const [noteRect, setNoteRect] = useState(() => {
@@ -261,9 +255,6 @@ const app = () => {
    const hours24 = time.getHours();
    const ampm = hours24 < 12 ? "오전" : "오후";
    const hours12 = hours24 % 12 || 12;
-
-   const clockStr = `${ampm} ${hours12}:${fmt(time.getMinutes())}`;
-   const dateStr = `${time.getFullYear()}-${fmt(time.getMonth() + 1)}-${fmt(time.getDate())}`;
 
    // ── 폴더/파일 열기
    const openFolder = useCallback(
@@ -455,8 +446,8 @@ const app = () => {
          if (!dragSelecting.current || !desktopRef.current) return;
          const { clientX, clientY } = getCoords(e);
          const rect = desktopRef.current.getBoundingClientRect();
-         const cx = Math.min(Math.max(e.clientX - rect.left, 0), rect.width);
-         const cy = Math.min(Math.max(e.clientY - rect.top, 0), rect.height);
+         const cx = Math.min(Math.max(clientX - rect.left, 0), rect.width);
+         const cy = Math.min(Math.max(clientY - rect.top, 0), rect.height);
          const ox = dragOrigin.current.x;
          const oy = dragOrigin.current.y;
          const box = {
@@ -506,22 +497,6 @@ const app = () => {
    const node = currentKey ? FS[currentKey] : null;
    const breadcrumb = currentKey ? buildBreadcrumb(currentKey) : [];
    const children = node?.children || [];
-
-   const handleTouchEnd = (e, key, onSingle, onDouble) => {
-      const now = Date.now();
-      const last = lastTapTime.current[key] || 0;
-      const diff = now - last;
-
-      if (diff < 300 && diff > 0) {
-         // 더블탭
-         onDouble?.(e);
-         lastTapTime.current[key] = 0;
-      } else {
-         // 싱글탭
-         onSingle?.(e);
-         lastTapTime.current[key] = now;
-      }
-   };
 
    const onTitleTouchStart = (e) => {
       if (isMaximized) return;
@@ -673,22 +648,10 @@ const app = () => {
                         if (key === "notepad") openNote();
                         else openFolder(key);
                      }}
-                     onTouchEnd={(e) =>
-                        handleTouchEnd(
-                           e,
-                           key,
-                           () => {
-                              // 싱글탭
-                              if (key === "notepad") openNote();
-                              else openFolder(key);
-                           },
-                           () => {
-                              // 더블탭
-                              if (key === "notepad") openNote();
-                              else openFolder(key);
-                           },
-                        )
-                     }
+                     onTouchEnd={() => {
+                        if (key === "notepad") openNote();
+                        else openFolder(key);
+                     }}
                   />
                ))}
             </div>
@@ -715,7 +678,7 @@ const app = () => {
                         onTouchEnd={onTitleTouchEnd}
                      >
                         <span className="window_title_icon">
-                           <img src={node?.icon || folder} />
+                           <img src={node?.icon || folder11} />
                         </span>
                         <span className="window_title_name">
                            {node?.name || "폴더"}
@@ -816,21 +779,11 @@ const app = () => {
                                              setPreview(child);
                                           else openFolder(childKey);
                                        }}
-                                       onTouchEnd={(
-                                          e, // ← 추가
-                                       ) =>
-                                          handleTouchEnd(
-                                             e,
-                                             childKey,
-                                             () => setSelectedItem(childKey), // 싱글탭 → 선택
-                                             () => {
-                                                // 더블탭 → 열기
-                                                if (child.type === "file")
-                                                   setPreview(child);
-                                                else openFolder(childKey);
-                                             },
-                                          )
-                                       }
+                                       onTouchEnd={() => {
+                                          if (child.type === "file")
+                                             setPreview(child);
+                                          else openFolder(childKey);
+                                       }}
                                     />
                                  </div>
                               );
