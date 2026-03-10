@@ -68,7 +68,7 @@ const app = () => {
          title: "엘리시안 클론코딩 🏢",
          desc: "계절에 맞게 즐길 수 있는 각종 스포츠를 \n 제공하는  복합 레저, 서비스 기업으로, \n React를 활용하여 클론코딩 해보았습니다",
          tags: ["React", "반응형", "클론코딩"],
-         link: "#",
+         link: "https://byungil712.github.io/elysian/",
       },
       proj3: {
          name: "tvN 리디자인",
@@ -77,7 +77,7 @@ const app = () => {
          title: "tvN 리디자인 🚩",
          desc: "현재 tvN 홈페이지는 다소 복잡한 \n  네비게이션과 시각적피로도, 접근성 측면에서 \n 문제가 있다고 생각하여 OTT 디자인으로 \n 재해석하여 리디자인 해보았습니다",
          tags: ["tvN", "OTT", "리디자인"],
-         link: "#",
+         link: "https://byungil712.github.io/tvn/index.html",
       },
       skills: {
          name: "Skills",
@@ -119,7 +119,7 @@ const app = () => {
          icon: redux,
          type: "file",
          title: "Redux ❄️",
-         tags: ["웹", "API", "Component", "DOM"],
+         tags: ["웹", " 라이브러리", "Dispatch"],
       },
       figma: {
          name: "Figma",
