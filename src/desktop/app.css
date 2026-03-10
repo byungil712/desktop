@@ -36,7 +36,9 @@ body {
 /* 데스크탑 */
 .desktop {
    width: 100vw;
-   height: 100vh;
+   height: 100dvh;
+   padding-top: env(safe-area-inset-top);  
+   padding-bottom: env(safe-area-inset-bottom);
    position: relative;
 }
 
@@ -733,6 +735,7 @@ body {
 
 .start_pinned {
    display: flex;
+   flex-wrap: wrap;
    margin-bottom: 8px;
 }
 
@@ -750,7 +753,7 @@ body {
    background: rgba(255, 255, 255, 0.08);
 }
 
-.start_app_icon img{
+.start_app_icon img {
    width: 40px;
 }
 
@@ -859,6 +862,10 @@ body {
 }
 
 @media screen and (max-width: 500px) {
+   .desktop_icons{
+      padding-top: 16px;
+   }
+
    .desktop_icons .desktop_icon .desktop_icon_img {
       width: 38px;
       height: 38px;
@@ -886,17 +893,14 @@ body {
    }
 
    .start_menu {
-      max-width: 355px;
+      max-width: 375px;
    }
 
-   .start_pinned {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      row-gap: 16px;
-      margin-bottom: 16px;
+   .start_app {
+      padding: 8px;
    }
 
-   .thanks .thanks_text{
+   .thanks .thanks_text {
       font-size: 24px;
    }
 }
@@ -916,7 +920,23 @@ body {
       background-color: rgba(8, 8, 18, 0.92);
    }
 
-   .calendar_grid{
+   .calendar_grid {
       gap: 4px;
+   }
+
+   .start_menu {
+      max-width: 355px;
+   }
+}
+
+@media screen and (max-width:375px) {
+   .start_menu {
+      max-width: 325px;
+   }
+}
+
+@media screen and (max-width:345px) {
+   .start_menu {
+      max-width: 275px;
    }
 }
