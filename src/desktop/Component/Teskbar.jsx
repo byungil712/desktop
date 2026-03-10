@@ -170,7 +170,7 @@ const Teskbar = ({
             showThanks && (
                <div className="thanks">
                   <div className="thanks_text">
-                     <h3>Thanks for Watching</h3>
+                     <h3>Thanks For Watching</h3>
                   </div>
                   <div className="thanks_close">
                      <button type="button" onClick={() => setShowThanks((v) => !v)}>닫기</button>

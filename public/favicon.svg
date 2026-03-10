@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1e2e"/>
+      <stop offset="100%" style="stop-color:#2a2a3e"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#89dceb"/>
+      <stop offset="100%" style="stop-color:#00b4d8"/>
+    </linearGradient>
+  </defs>
+  <!-- 배경 -->
+  <rect width="32" height="32" rx="7" fill="url(#bg3)"/>
+  <!-- 왼쪽 꺾쇠 < -->
+  <polyline points="11,9 5,16 11,23" fill="none" stroke="url(#cyan)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 오른쪽 꺾쇠 > -->
+  <polyline points="21,9 27,16 21,23" fill="none" stroke="url(#cyan)" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 슬래시 / -->
+  <line x1="19" y1="9" x2="13" y2="23" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+</svg>
