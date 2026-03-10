@@ -15,12 +15,14 @@ https://byungil712.github.io/desktop/
 - 시작메뉴 (주요 앱 표시 및 종료버튼)
 - 모바일 터치 지원 (모바일에서도 주요 기능 동작)
 
+
 ## 기술 스택 🛡️
 - React
 - CSS
 - FontAwesome
 
 
+## 프로젝트 구조
 ```
 desktop/
 │
