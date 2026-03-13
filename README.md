@@ -1,16 +1,48 @@
-# React + Vite
+# Windows 11 데스크탑 UI를 모티브로 만든 포트폴리오
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## 사이트 주소 ❄️
+https://byungil712.github.io/desktop/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+## 주요 기능 ⭐
+- 폴더 탐색기      
+- 폴더 드래그 & 리사이징      
+- 폴더 최소화 & 최대화        
+- 바탕화면 드래그 시 영역생성
+- 메모장 (저장 및 리셋 기능)
+- 캘린더 (현재 날짜 강조)
+- 시작메뉴 (주요 앱 표시 및 종료버튼)
+- 모바일 터치 지원 (모바일에서도 주요 기능 동작)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+## 기술 스택 🛡️
+- React
+- CSS
+- FontAwesome
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## 프로젝트 구조
+```
+desktop/
+│
+├── 📁 public/
+│   ├── 📁 img/
+│   ├── bg11.png
+│   └── favicon.ico
+│       
+└── 📁 src/
+    ├── 📁 desktop/
+    │   ├── 📁 Component/
+    │   │   ├── DesktopIcon.jsx
+    │   │   ├── FileItem.jsx
+    │   │   ├── Memo.jsx
+    │   │   ├── Teskbar.jsx
+    │   │   └── TitleBtn.jsx
+    │   │
+    │   ├── App.jsx
+    │   └── app.css
+    │
+    └── main.jsx
+
+```
