@@ -43,7 +43,7 @@ const app = () => {
          icon: file,
          type: "file",
          title: "안녕하세요! 👋 ",
-         desc: "웹 퍼블리셔 [박병일]입니다.\nHTML·CSS·JS·REACT를 기반으로\n다양한 화면에서도 일관된 디자인을 유지하게하고, \n 반응형이 잘 작동되는 퍼블리싱을 추구합니다.\n\n접근성과 클린코드을 중시하며\n디자이너와 개발자 사이의 가교 역할을 합니다.",
+         desc: "웹 퍼블리셔 [박병일]입니다.\nHTML·CSS·JS·REACT를 기반으로\n다양한 화면에서도 일관된 디자인을 유지하게하고, \n 접근성과 클린코드을 중시하며 \n 반응형이 잘 작동되는 퍼블리싱을 추구합니다.",
          tags: ["HTML5", "CSS3", "JavaScript", "React"],
       },
       projects: {
