@@ -567,10 +567,8 @@ If it declares any Font Awesome CSS pseudo-elements, they will not be rendered a
 `).length,"줄"]})]}),["n","s","e","w","ne","nw","se","sw"].map(q=>j.jsx("div",{className:`resize_handle resize_handle_${q}`,onMouseDown:Q(q),onTouchStart:ct(q),onTouchEnd:()=>{b.current=!1}},q))]})},s2="/desktop/img/sun.png",o2="/desktop/img/elysian.png",d2="/desktop/img/tvN.png",m2="/desktop/img/htmlcss.png",h2="/desktop/img/js.jpg",v2="/desktop/img/React.webp",y2="/desktop/img/redux.png",g2="/desktop/img/figma.webp",p2="/desktop/img/photoshop.png",b2="/desktop/img/illustrator.png",S2="/desktop/img/indesign.png",A2="/desktop/img/phone.webp",E2="/desktop/img/email.png",_2="/desktop/img/github.png",x2="/desktop/img/memo11.png",T2=()=>{const i={root:{name:"내 PC",icon:Kr,children:["about","projects","contact"]},about:{name:"About Me",icon:We,children:["profile","skills"]},profile:{name:"프로필",icon:Pv,type:"file",title:"안녕하세요! 👋 ",desc:`웹 퍼블리셔 [박병일]입니다.
 HTML·CSS·JS·REACT를 기반으로
 다양한 화면에서도 일관된 디자인을 유지하게하고, 
- 반응형이 잘 작동되는 퍼블리싱을 추구합니다.
-
-접근성과 클린코드을 중시하며
-디자이너와 개발자 사이의 가교 역할을 합니다.`,tags:["HTML5","CSS3","JavaScript","React"]},projects:{name:"Project",icon:We,children:["proj1","proj2","proj3"]},proj1:{name:"날씨 앱",icon:s2,type:"file",title:"날씨 앱 🌤️",desc:`React를 활용하여 만든 날씨 앱으로
+ 접근성과 클린코드을 중시하며 
+ 반응형이 잘 작동되는 퍼블리싱을 추구합니다.`,tags:["HTML5","CSS3","JavaScript","React"]},projects:{name:"Project",icon:We,children:["proj1","proj2","proj3"]},proj1:{name:"날씨 앱",icon:s2,type:"file",title:"날씨 앱 🌤️",desc:`React를 활용하여 만든 날씨 앱으로
 메인기능은 OpenWeatherMap API를 활용한 날씨 정보 제공입니다.
 현재 위치 또는 도시 선택으로 실시간 날씨, 
 24시간 시간대별 예보, 5일간 주간 예보를 확인할 수 있으며 
