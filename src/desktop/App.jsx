@@ -10,7 +10,8 @@ import Memo from "./Component/Memo";
 import sun from "/img/sun.png";
 import elysian from "/img/elysian.png";
 import tvn from "/img/tvN.png";
-import html from "/img/htmlcss.png";
+import html from "/img/html.png";
+import css from "/img/css.webp";
 import js from "/img/js.jpg";
 import react from "/img/React.webp";
 import redux from "/img/redux.png";
@@ -83,7 +84,8 @@ const app = () => {
          name: "Skills",
          icon: folder11,
          children: [
-            "htmlCss",
+            "html",
+            "css",
             "js",
             "react",
             "redux",
@@ -93,12 +95,19 @@ const app = () => {
             "inDesign",
          ],
       },
-      htmlCss: {
-         name: "HTML·CSS",
+      html: {
+         name: "HTML",
          icon: html,
          type: "file",
-         title: "HTML & CSS 🫧",
-         tags: ["웹", "웹 표준", "Class"],
+         title: "HTML🫧",
+         tags: ["웹", "웹 표준", "접근성"],
+      },
+      css: {
+         name: "CSS",
+         icon: css,
+         type: "file",
+         title: "CSS 🫧",
+         tags: ["웹", "Class", "Tag"],
       },
       js: {
          name: "JavaScript",
@@ -176,7 +185,7 @@ const app = () => {
          type: "file",
          title: "GitHub ⭐",
          tags: ["git", "배포"],
-         git: "https://github.com",
+         git: "https://github.com/byungil712?tab=repositories",
       },
    };
 
