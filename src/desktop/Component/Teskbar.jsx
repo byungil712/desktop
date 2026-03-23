@@ -72,7 +72,6 @@ const Teskbar = ({
          {/* 캘린더 팝업 */}
          {showCal && (
             <div className="calendar">
-               {/* 헤더 */}
                <div className="calendar_header">
                   <button className="calendar_nav" onClick={prevMonth}>
                      ‹
@@ -85,7 +84,6 @@ const Teskbar = ({
                   </button>
                </div>
 
-               {/* 요일 */}
                <div className="calendar_grid">
                   {["일", "월", "화", "수", "목", "금", "토"].map((d) => (
                      <div key={d} className="calendar_weekday">
@@ -93,7 +91,6 @@ const Teskbar = ({
                      </div>
                   ))}
 
-                  {/* 날짜 */}
                   {cells.map((d, i) => (
                      <div
                         key={i}

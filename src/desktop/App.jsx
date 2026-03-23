@@ -9,6 +9,7 @@ import Teskbar from "./Component/Teskbar";
 import Memo from "./Component/Memo";
 import sun from "/img/sun.png";
 import elysian from "/img/elysian.png";
+import spotify from "/img/spotify.png";
 import tvn from "/img/tvN.png";
 import html from "/img/html.png";
 import css from "/img/css.webp";
@@ -50,7 +51,7 @@ const app = () => {
       projects: {
          name: "Project",
          icon: folder11,
-         children: ["proj1", "proj2", "proj3"],
+         children: ["proj1", "proj2", "proj3", "proj4"],
       },
       proj1: {
          name: "날씨 앱",
@@ -72,6 +73,15 @@ const app = () => {
          link: "https://byungil712.github.io/elysian/",
       },
       proj3: {
+         name: "스포티파이 클론코딩",
+         icon: spotify,
+         type: "file",
+         title: "스포티파이 클론코딩 🎵",
+         desc: "전 세계 글로벌 오디오 스트리밍 플랫폼 \n Spotify를 클론코딩 해보았습니다",
+         tags: ["React", "반응형", "클론코딩"],
+         link: "https://byungil712.github.io/spotify/",
+      },
+      proj4: {
          name: "tvN 리디자인",
          icon: tvn,
          type: "file",

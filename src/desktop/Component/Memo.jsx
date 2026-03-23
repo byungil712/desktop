@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import TitleBtn from "./TitleBtn";
 
 const Memo = ({ visible, onClose, rect, setRect }) => {
-   // 메모장 내부 state
    const [content, setContent] = useState(
       () => localStorage.getItem("notepad_content") || "",
    );
@@ -156,7 +155,7 @@ const Memo = ({ visible, onClose, rect, setRect }) => {
             </button>
          </div>
 
-         {/* 텍스트 영역 */}
+         {/* 텍스트 */}
          <textarea
             className="note_textarea"
             value={content}
@@ -174,7 +173,7 @@ const Memo = ({ visible, onClose, rect, setRect }) => {
             </span>
          </div>
 
-         {/* 리사이즈 핸들 8방향 */}
+         {/* 리사이즈 핸들 */}
          {["n", "s", "e", "w", "ne", "nw", "se", "sw"].map((dir) => (
             <div
                key={dir}
