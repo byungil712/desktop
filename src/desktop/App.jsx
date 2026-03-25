@@ -13,6 +13,7 @@ import spotify from "/img/spotify.png";
 import tvn from "/img/tvN.png";
 import html from "/img/html.png";
 import css from "/img/css.webp";
+import scss from "/img/scss.png";
 import js from "/img/js.jpg";
 import react from "/img/React.webp";
 import redux from "/img/redux.png";
@@ -96,6 +97,7 @@ const app = () => {
          children: [
             "html",
             "css",
+            "scss",
             "js",
             "react",
             "redux",
@@ -118,6 +120,13 @@ const app = () => {
          type: "file",
          title: "CSS 🫧",
          tags: ["웹", "Class", "Tag"],
+      },
+      scss: {
+         name: "SCSS",
+         icon: scss,
+         type: "file",
+         title: "SCSS 💫",
+         tags: ["웹", "변수", "Mixin"],
       },
       js: {
          name: "JavaScript",
