@@ -103,7 +103,7 @@ body {
 .window {
    min-width: 360px;
    min-height: 240px;
-   position: absolute;
+   position: relative;
    display: flex;
    flex-direction: column;
    justify-content: space-between;
@@ -113,9 +113,7 @@ body {
    transition:
       opacity 0.2s ease,
       transform 0.2s ease;
-   /* background-color: #fff; */
    background-color: #111;
-   /* border: 2px solid #0051ff; */
    border: 1px solid #606060;
    border-radius: 6px;
    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75);
@@ -131,17 +129,19 @@ body {
    display: flex;
    flex-direction: column;
    flex: 1;
+   position: relative;
 }
 
 .window_title {
+   width: 100%;
    height: 32px;
    display: flex;
    align-items: center;
    padding: 0 8px;
    gap: 8px;
-   /* background: linear-gradient(180deg,rgba(125, 164, 255, 0.85) 0%, rgba(0, 81, 255, 1) 28%, rgba(0, 81, 255, 1) 70%, rgba(125, 164, 255, 0.85) 100%); */
+   position: fixed;
+   top: 0;
    background-color: #262626;
-   /* border-bottom: 1px solid #aaaaaa; */
    border-bottom: 1px solid #606060;
    cursor: move;
    z-index: 100;
@@ -196,15 +196,20 @@ body {
    color: #fff;
 }
 
+.window_top{
+   height: 100%;
+}
+
 .window_top .window_address {
+   width: 100%;
    height: 34px;
    display: flex;
    align-items: center;
    gap: 8px;
+   position: fixed;
+   top: 32px;
    padding: 0 8px;
-   /* background-color: #c5c5c5; */
    background-color: #212121;
-   /* border-bottom: 1px solid #aaa; */
    border-bottom: 1px solid #606060;
    z-index: 100;
 }
@@ -302,7 +307,11 @@ body {
    flex-wrap: wrap;
    align-items: flex-start;
    gap: 8px;
+   overflow: scroll;
+   scrollbar-width: none;
    padding: 16px;
+   margin-top: 66px;
+   margin-bottom: 16px;
 }
 
 .file_items {
@@ -321,9 +330,11 @@ body {
 
 .file_item {
    min-width: 64px;
+   height: 74px;
    display: flex;
    flex-direction: column;
    align-items: center;
+   justify-content: flex-start;
    gap: 8px;
    padding: 8px;
    transition: background 0.12s;
@@ -469,6 +480,7 @@ body {
 
 /* 상태바 */
 .window_status {
+   width: 100%;
    height: 24px;
    display: flex;
    align-items: center;
@@ -476,7 +488,9 @@ body {
    padding: 0 8px;
    background-color: #252525;
    border-top: 1px solid #333;
-   position: relative;
+   position: absolute;
+   bottom: 0;
+   z-index: 9999;
 }
 
 .window_status_text {
@@ -497,6 +511,7 @@ body {
 .resize_handle {
    position: absolute;
    background-color: transparent;
+   z-index: 9999;
 }
 
 .resize_handle_n {
@@ -770,13 +785,13 @@ body {
    align-items: center;
    gap: 8px;
    padding: 8px 16px;
-   background-color: #fff;
    border: none;
    border-radius: 16px;
    color: #000;
+   background-color: #fff;
 }
 
-/* 전원누른 뒤 */
+/* 전원누른뒤 */
 
 .thanks {
    width: 100%;
@@ -812,17 +827,20 @@ body {
 .thanks .thanks_close button {
    padding: 8px 16px;
    border-radius: 24px;
-   background-color: #fff;
-   color: #000;
    cursor: pointer;
+   color: #000;
+   background-color: #fff;
 }
 
 /* 메모장 메뉴바 */
 .note_menubar {
+   width: 100%;
    height: 28px;
    display: flex;
    align-items: center;
    gap: 4px;
+   position: absolute;
+   top: 32px;
    padding: 0 8px;
    background-color: #1e1e1e;
    border-bottom: 1px solid #606060;
@@ -833,12 +851,12 @@ body {
    padding: 0 10px;
    font-size: 12px;
    font-family: inherit;
-   background: transparent;
    border: none;
    border-radius: 3px;
-   color: #ccc;
    cursor: pointer;
    transition: background 0.12s;
+   background-color: transparent;
+   color: #ccc;
 }
 
 .note_menu_btn:hover {
@@ -850,15 +868,17 @@ body {
    flex: 1;
    width: 100%;
    padding: 12px;
-   background: #1a1a1a;
    border: none;
    outline: none;
-   color: #ddd;
    font-size: 14px;
+   margin-top: 60px;
    font-family: "Nanum Gothic", monospace;
    line-height: 1.6;
    resize: none;
    overflow-y: auto;
+   scrollbar-width: none;
+   background-color: #1a1a1a;
+   color: #ddd;
 }
 
 @media screen and (max-width: 500px) {

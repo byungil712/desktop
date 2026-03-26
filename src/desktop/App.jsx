@@ -17,6 +17,7 @@ import scss from "/img/scss.png";
 import js from "/img/js.jpg";
 import react from "/img/React.webp";
 import redux from "/img/redux.png";
+import git from "/img/git.webp";
 import figma from "/img/figma.webp";
 import photoshop from "/img/photoshop.png";
 import ill from "/img/illustrator.png";
@@ -101,6 +102,8 @@ const app = () => {
             "js",
             "react",
             "redux",
+            "git",
+            "github",
             "figma",
             "photoshop",
             "illustrator",
@@ -148,6 +151,20 @@ const app = () => {
          type: "file",
          title: "Redux ❄️",
          tags: ["웹", " 라이브러리", "Dispatch"],
+      },
+      git: {
+         name: "git",
+         icon: git,
+         type: "file",
+         title: "git ♦️",
+         tags: ["소스", " 버전", "관리"],
+      },
+      githubSkill: {
+         name: "github",
+         icon: github,
+         type: "file",
+         title: "github 🎁",
+         tags: ["웹", " 배포", "협업"],
       },
       figma: {
          name: "Figma",
