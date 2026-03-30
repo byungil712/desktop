@@ -389,7 +389,7 @@ body {
    padding: 16px;
    margin-top: 66px;
    animation: fadeIn 0.2s ease;
-   overflow-y: hidden;
+   overflow-y: auto;
 }
 
 @keyframes fadeIn {
