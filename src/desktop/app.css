@@ -101,7 +101,7 @@ body {
 
 /* 탐색기 윈도우 */
 .window {
-   min-width: 360px;
+   min-width: 410px;
    min-height: 240px;
    position: relative;
    display: flex;
@@ -894,7 +894,7 @@ body {
    }
 
    .window {
-      min-width: 300px;
+      min-width: 325px;
    }
 }
 
